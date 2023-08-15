@@ -54,4 +54,7 @@ namespace gregslist_csharp.Controllers;
             return BadRequest(e.Message);
         }
     }
+
+    [HttpDelete("{houseId}")]
+    
 }
