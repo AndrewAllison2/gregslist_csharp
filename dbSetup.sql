@@ -139,3 +139,16 @@ SELECT * FROM houses;
 
 SELECT LAST_INSERT_ID();
 
+
+-- SECTION JOBS 
+
+CREATE TABLE
+    jobs(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        title VARCHAR(155) NOT NULL,
+        description VARCHAR(255) NOT NULL,
+        salary INT NOT NULL,
+        isFullTime BOOLEAN DEFAULT true,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Time last updated'
+    ) default charset utf8 COMMENT '';
