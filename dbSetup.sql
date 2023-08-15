@@ -145,10 +145,33 @@ SELECT LAST_INSERT_ID();
 CREATE TABLE
     jobs(
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        title VARCHAR(155) NOT NULL,
+        title VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         salary INT NOT NULL,
         isFullTime BOOLEAN DEFAULT true,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Time last updated'
     ) default charset utf8 COMMENT '';
+
+INSERT INTO
+    jobs(
+        title, description, salary, isFullTime)
+        VALUES
+        (
+            "Pool Cleaner",
+            "Out in the sun cleaning dem pools",
+            40000,
+            true
+        ), (
+            "Lawn Mower",
+            "Cut the grass for people who are lazy",
+            35000,
+            true
+        ), (
+            "Intern",
+            "Go get the coffee and stuff",
+            18000,
+            false
+        );
+
+SELECT * FROM jobs;
