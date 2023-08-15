@@ -61,7 +61,7 @@ namespace gregslist_csharp.Controllers;
         try
         {
             House house = _housesService.RemoveHouse(houseId);
-            return Ok($"{house.Bedrooms} {house.Bathrooms} house was removed.");
+            return Ok($"{house.Bedrooms} bedroom {house.Bathrooms} bathroom house was removed.");
         }
         catch (Exception e)
         {
