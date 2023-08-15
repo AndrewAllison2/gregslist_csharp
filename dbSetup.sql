@@ -97,3 +97,43 @@ VALUES (
     );
 
 SELECT LAST_INSERT_ID();
+
+
+-- SECTION GREGSLIST AFTERNOON
+
+CREATE TABLE
+    houses(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        sqft INT NOT NULL,
+        bedrooms INT NOT NULL,
+        bathrooms INT NOT NULL,
+        imgUrl VARCHAR (255) NOT NULL,
+        description VARCHAR(255) NOT NULL,
+        price INT NOT NULL,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time created',
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Time last updated'
+    ) default charset utf8 COMMENT '';
+
+
+    INSERT INTO
+    houses(
+        sqft, bedrooms, bathrooms, imgUrl, description, price)
+        VALUES
+        (
+            1800,
+            3,
+            2,
+            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG91c2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+            'A big ol house',
+            250000
+        ), (
+            200,
+            1,
+            1,
+            'https://media.istockphoto.com/id/97049368/photo/cardbord-box.webp?b=1&s=170667a&w=0&k=20&c=_xL2EfgEpFcYGEagBfcP3zG33k6G4qHMU4b1e-7BC4Y=',
+            'Affordable housing nowadays',
+            150000
+        );
+
+SELECT * FROM houses;
+
