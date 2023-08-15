@@ -30,4 +30,18 @@ namespace gregslist_csharp.Controllers;
             return BadRequest(e.Message);
         }
     }
+
+    [HttpGet("{jobId}")]
+    public ActionResult<Job> GetJobById(int jobId)
+    {
+        try
+        {
+            Job job = _jobsService.GetJobById(jobId);
+            return Ok(job);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }

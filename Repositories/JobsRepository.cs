@@ -14,6 +14,13 @@ namespace gregslist_csharp.Repositories;
         _db = db;
     }
 
+    internal Job GetJobById(int jobId)
+    {
+        string sql = $"SELECT * FROM jobs WHERE id = @jobId;";
+        Job job = _db.QueryFirstOrDefault<Job>(sql, new { jobId });
+        return job;
+    }
+
     internal List<Job> GetJobs()
     {
         string sql = "SELECT * FROM jobs;";
