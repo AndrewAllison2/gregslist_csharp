@@ -38,7 +38,7 @@ namespace gregslist_csharp.Repositories
             description = @Description,
             price = @Price
             WHERE id = @Id
-            LIMIT 1
+            LIMIT 1;
             SELECT * FROM houses WHERE id = @Id
             ;";
 
