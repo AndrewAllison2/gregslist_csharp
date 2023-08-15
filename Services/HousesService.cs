@@ -39,5 +39,12 @@ namespace gregslist_csharp.Services
             List<House> houses = _housesRepository.GetHouses();
             return houses;
         }
+
+        internal House RemoveHouse(int houseId)
+        {
+            House house = GetHouseById(houseId);
+            _housesRepository.RemoveHouse(houseId);
+            return house;
+        }
     }
 }

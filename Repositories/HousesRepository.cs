@@ -39,5 +39,11 @@ namespace gregslist_csharp.Repositories
             List<House> houses = _db.Query<House>(sql).ToList();
             return houses;
         }
+
+        internal void RemoveHouse(int houseId)
+        {
+            string sql = "DELETE FROM houses WHERE id = @houseId LIMIT 1;";
+            _db.Execute(sql, new { houseId });
+        }
     }
 }

@@ -56,5 +56,16 @@ namespace gregslist_csharp.Controllers;
     }
 
     [HttpDelete("{houseId}")]
-    
+    public ActionResult<string> RemoveHouse(int houseId)
+    {
+        try
+        {
+            House house = _housesService.RemoveHouse(houseId);
+            return Ok($"{house.Bedrooms} {house.Bathrooms} house was removed.");
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }
