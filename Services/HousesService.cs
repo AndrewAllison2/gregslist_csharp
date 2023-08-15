@@ -14,6 +14,15 @@ namespace gregslist_csharp.Services
             _housesRepository = housesRepository;
         }
 
+        internal House CreateHouse(House houseData)
+        {
+            int houseId = _housesRepository.CreateHouses(houseData);
+
+            House house = GetHouseById(houseId);
+
+            return house;
+        }
+
         internal House GetHouseById(int houseId)
         {
             House house = _housesRepository.GetHouseById(houseId);

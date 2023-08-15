@@ -40,4 +40,18 @@ namespace gregslist_csharp.Controllers;
             return BadRequest(e.Message);
         }
     }
+
+    [HttpPost]
+    public ActionResult<House> CreateHouses([FromBody] House houseData)
+    {
+        try
+        {
+            House house = _housesService.CreateHouse(houseData);
+            return Ok(house);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }

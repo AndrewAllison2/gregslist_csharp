@@ -14,6 +14,18 @@ namespace gregslist_csharp.Repositories
             _db = db;
         }
 
+        internal int CreateHouses(House houseData)
+        {
+            string sql = @"
+            INSERT INTO houses (sqft, bedrooms, bathrooms, imgUrl, description, price)
+            VALUES(@Sqft, @Bedrooms, @Bathrooms, @ImgUrl, @Description, @Price);
+            SELECT LAST_INSERT_ID()
+            ;";
+
+            int houseId = _db.ExecuteScalar<int>(sql, houseData);
+            return houseId;
+        }
+
         internal House GetHouseById(int houseId)
         {
             string sql = $"SELECT * FROM houses WHERE id = @houseId;";
