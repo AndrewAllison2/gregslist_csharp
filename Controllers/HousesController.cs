@@ -68,4 +68,18 @@ namespace gregslist_csharp.Controllers;
             return BadRequest(e.Message);
         }
     }
+
+    [HttpPut("{houseId}")]
+    public ActionResult<House> EditHouse(int houseId, [FromBody] House houseData)
+    {
+        try
+        {
+            House house = _housesService.EditHouse(houseId, houseData);
+            return Ok(house);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }

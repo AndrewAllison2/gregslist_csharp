@@ -23,6 +23,21 @@ namespace gregslist_csharp.Services
             return house;
         }
 
+        internal House EditHouse(int houseId, House houseData)
+        {
+            House originalHouse = GetHouseById(houseId);
+
+            originalHouse.Sqft = houseData.Sqft ?? originalHouse.Sqft;
+            originalHouse.Bedrooms = houseData.Bedrooms ?? originalHouse.Bedrooms;
+            originalHouse.Bathrooms = houseData.Bathrooms ?? originalHouse.Bathrooms;
+            originalHouse.ImgUrl = houseData.ImgUrl ?? originalHouse.ImgUrl;
+            originalHouse.Description = houseData.Description ?? originalHouse.Description;
+            originalHouse.Price = houseData.Price ?? originalHouse.Price;
+
+            House house = _housesRepository.EditHouse(originalHouse);
+            return house;
+        }
+
         internal House GetHouseById(int houseId)
         {
             House house = _housesRepository.GetHouseById(houseId);

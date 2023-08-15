@@ -26,6 +26,26 @@ namespace gregslist_csharp.Repositories
             return houseId;
         }
 
+        internal House EditHouse(House originalHouse)
+        {
+            string sql = @"
+            UPDATE houses
+            SET
+            sqft = @Sqft,
+            bedrooms = @Bedrooms,
+            bathrooms = @Bathrooms,
+            imgUrl = @ImgUrl,
+            description = @Description,
+            price = @Price
+            WHERE id = @Id
+            LIMIT 1
+            SELECT * FROM houses WHERE id = @Id
+            ;";
+
+            House updatedHouse = _db.QueryFirstOrDefault<House>(sql, originalHouse);
+            return updatedHouse;
+        }
+
         internal House GetHouseById(int houseId)
         {
             string sql = $"SELECT * FROM houses WHERE id = @houseId;";
