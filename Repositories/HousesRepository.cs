@@ -14,6 +14,13 @@ namespace gregslist_csharp.Repositories
             _db = db;
         }
 
+        internal House GetHouseById(int houseId)
+        {
+            string sql = $"SELECT * FROM houses WHERE id = @houseId;";
+            House house = _db.QueryFirstOrDefault<House>(sql, new { houseId });
+            return house;
+        }
+
         internal List<House> GetHouses()
         {
             string sql = "SELECT * FROM houses;";
